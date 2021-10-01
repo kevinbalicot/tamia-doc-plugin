@@ -1,0 +1,22 @@
+{
+  "name": "@tamia/doc-plugin",
+  "version": "0.1.0",
+  "description": "Tamia Doc plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.beelab.tk:tamia/doc-plugin.git"
+  },
+  "keywords": [
+    "Tamia",
+    "plugin"
+  ],
+  "author": "Kevin Balicot <kevinbalicot@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "swagger-ui-dist": "^3.52.3"
+  }
+}
