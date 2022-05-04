@@ -1,5 +1,5 @@
 {
-  "name": "@tamia/doc-plugin",
+  "name": "@tamia-web/doc-plugin",
   "version": "0.1.0",
   "description": "Tamia Doc plugin",
   "main": "index.js",
