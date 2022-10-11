@@ -3,17 +3,18 @@ const pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
 const swaggerJs = fs.readFileSync(`${pathToSwaggerUi}/swagger-ui-bundle.js`, 'utf-8');
 const swaggerCss = fs.readFileSync(`${pathToSwaggerUi}/swagger-ui.css`, 'utf-8');
 
-module.exports = function(req, res, next) {
-    if (req.url === '/doc.json') {
-        res.setHeader('Content-Type', 'application/json');
+module.exports = (apiPrefix = '/api') => {
+    return function(req, res, next) {
+        if (req.url === '/doc.json') {
+            res.setHeader('Content-Type', 'application/json');
 
-        return res.end(JSON.stringify(this.api));
-    }
+            return res.end(JSON.stringify(this.api));
+        }
 
-    if (req.url === '/doc.html') {
-        res.setHeader('Content-Type', 'text/html');
+        if (req.url === '/doc.html') {
+            res.setHeader('Content-Type', 'text/html');
 
-        return res.end(`
+            return res.end(`
             <!DOCTYPE html>
             <html>
                 <head>
@@ -27,14 +28,15 @@ module.exports = function(req, res, next) {
                     <section id="swagger-container"></section>
                     <script>
                         SwaggerUIBundle({
-                            url: '/api/doc.json',
+                            url: '${apiPrefix}/doc.json',
                             dom_id: '#swagger-container',
                         });
                     </script>
                 </body>
             </html>
         `);
-    }
+        }
 
-    next();
-};
+        next();
+    };
+}
