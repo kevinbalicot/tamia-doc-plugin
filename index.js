@@ -5,13 +5,13 @@ const swaggerCss = fs.readFileSync(`${pathToSwaggerUi}/swagger-ui.css`, 'utf-8')
 
 module.exports = (apiPrefix = '/api') => {
     return function(req, res, next) {
-        if (req.url === '/doc.json') {
+        if (req.url === `${apiPrefix}/doc.json`) {
             res.setHeader('Content-Type', 'application/json');
 
             return res.end(JSON.stringify(this.api));
         }
 
-        if (req.url === '/doc.html') {
+        if (req.url === `${apiPrefix}/doc.html`) {
             res.setHeader('Content-Type', 'text/html');
 
             return res.end(`
